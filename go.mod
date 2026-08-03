@@ -5,7 +5,7 @@ go 1.21
 require (
 	github.com/LiamHaworth/go-tproxy v0.0.0-20190726054950-ef7efd7f24ed
 	github.com/VividCortex/ewma v1.2.0
-	github.com/cespare/xxhash/v2 v2.2.0
+	github.com/cespare/xxhash/v2 v2.3.0
 	github.com/gagliardetto/binary v0.7.9
 	github.com/gagliardetto/solana-go v1.8.4
 	github.com/google/gopacket v1.1.19
