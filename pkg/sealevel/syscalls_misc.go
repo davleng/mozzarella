@@ -3,7 +3,7 @@ package sealevel
 import (
 	"errors"
 
-	"go.firedancer.io/radiance/pkg/sbpf"
+	"github.com/davleng/mozzarella/pkg/sbpf"
 )
 
 func SyscallAbortImpl(_ sbpf.VM, _ int) (r0 uint64, cuOut int, err error) {

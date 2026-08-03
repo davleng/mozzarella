@@ -104,7 +104,7 @@ const headerSize = 32
 func (h *Header) Load(buf *[headerSize]byte) error {
 	// Use a magic byte sequence to bail fast when user passes a corrupted/unrelated stream.
 	if *(*[8]byte)(buf[:8]) != Magic {
-		return fmt.Errorf("not a radiance compactindex file")
+		return fmt.Errorf("not a mozzarella compactindex file")
 	}
 	*h = Header{
 		FileSize:   binary.LittleEndian.Uint64(buf[8:16]),

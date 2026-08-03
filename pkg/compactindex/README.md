@@ -7,7 +7,7 @@ This package specifies a file format and Go implementation for indexing constant
 - maps arbitrary keys into offsets in an external flat file;
 - consumes a constant amount of space per entry
   - ~6-8 bytes, regardless of key size
-  - 3 bytes per enty 
+  - 3 bytes per enty
 - `O(1)` complexity queries, with `2 + log2(10000)` lookups worst- & average-case (binary search);
 - during construction, requires near-constant memory space and `O(n)` scratch space with regard to entries per file;
 - during construction, features a constant >500k entry/s per-core write rate (2.5 GHz Intel laptop);
@@ -18,7 +18,7 @@ This package specifies a file format and Go implementation for indexing constant
 
 Refer to the Go documentation for the algorithms used and implementation details.
 
-[![Go Reference](https://pkg.go.dev/badge/go.firedancer.io/radiance/pkg/compactindex.svg)](https://pkg.go.dev/go.firedancer.io/radiance/pkg/compactindex)
+[![Go Reference](https://pkg.go.dev/badge/github.com/davleng/mozzarella/pkg/compactindex.svg)](https://pkg.go.dev/github.com/davleng/mozzarella/pkg/compactindex)
 
 [^1]: Fredman, M. L., Komlós, J., & Szemerédi, E. (1984). Storing a Sparse Table with 0 (1) Worst Case Access Time. Journal of the ACM, 31(3), 538–544. https://doi.org/10.1145/828.1884
 [^2]: cdb by D. J. Bernstein https://cr.yp.to/cdb.html
@@ -55,7 +55,7 @@ Here are some things compactindex cannot do:
 - Cannot add more entries to an existing index
   - Reason 1: indexes are tightly packed, so there is no space to insert new entries (though `fallocate(2)` with `FALLOC_FL_INSERT_RANGE` would technically work)
   - Reason 2: the second-level hashtable uses a perfect hash function ensuring collision-free indexing of a subset of entries;
-    inserting new entries might cause a collision requiring 
+    inserting new entries might cause a collision requiring
   - Reason 3: adding too many entries will eventually create an imbalance in the first-level hashtable;
     fixing this imbalance effectively requires re-constructing the file from scratch
 - Cannot iterate over keys

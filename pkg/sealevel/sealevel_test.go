@@ -9,11 +9,11 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/davleng/mozzarella/fixtures"
+	"github.com/davleng/mozzarella/pkg/sbpf"
+	"github.com/davleng/mozzarella/pkg/sbpf/loader"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"go.firedancer.io/radiance/fixtures"
-	"go.firedancer.io/radiance/pkg/sbpf"
-	"go.firedancer.io/radiance/pkg/sbpf/loader"
 )
 
 func TestExecute_Memo(t *testing.T) {

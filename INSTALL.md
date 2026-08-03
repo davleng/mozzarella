@@ -1,6 +1,6 @@
-# Building Radiance
+# Building Mozzarella
 
-Radiance depends on many external dependencies including optional C libraries.
+Mozzarella depends on many external dependencies including optional C libraries.
 This makes the build procedure slightly more complicated than a pure Go project.
 
 For installing C deps, the following options are available, each with their own tradeoffs:
@@ -16,7 +16,7 @@ For installing C deps, the following options are available, each with their own 
 - Manual Installation: If you know what you're doing, feel free to install C deps manually.
   - Good luck. Plan in 30 minutes of debugging time
 
-Radiance requires further requires Go 1.20. Other Go versions are not supported.
+Mozzarella requires further requires Go 1.20. Other Go versions are not supported.
 
 Here's a trick to download another Go version in case you have the wrong one.
 (See [Managing Go versions](https://golang.org/doc/manage-install))
@@ -25,14 +25,14 @@ Here's a trick to download another Go version in case you have the wrong one.
     "$(go env GOPATH)/bin/go1.20.5" download
     alias go="$(go env GOPATH)/bin/go1.20.5"
 
-Once your Go toolchain and build dependencies are installed, you can build Radiance as usual:
+Once your Go toolchain and build dependencies are installed, you can build Mozzarella as usual:
 
     go mod download
-    go run ./cmd/radiance
+    go run ./cmd/mozzarella
 
 ## Building with deps.sh
 
-`deps.sh` fetches deps using Git, compiles them, and installs them into the `opt` dir of your Radiance checkout.
+`deps.sh` fetches deps using Git, compiles them, and installs them into the `opt` dir of your Mozzarella checkout.
 
 To complete the one-time installation of deps, run
 
@@ -57,10 +57,10 @@ It will not pollute your system -- The C deps are not installed globally.
 
 ## Building with Nix
 
-Radiance provides a [Nix](https://nixos.org/) package.
+Mozzarella provides a [Nix](https://nixos.org/) package.
 
     nix-build
-    ./result/bin/radiance --help
+    ./result/bin/mozzarella --help
 
 Note that the resulting binary is not freestanding.
 It is linked against libraries provided by Nix and will not run on non-Nix hosts.
@@ -70,4 +70,4 @@ It is linked against libraries provided by Nix and will not run on non-Nix hosts
 The full set of functionality requires C dependencies via Cgo.
 To create a pure-Go build use the `lite` tag.
 
-    go build -tags=lite ./cmd/radiance
+    go build -tags=lite ./cmd/mozzarella

@@ -3,8 +3,8 @@ package loader
 import (
 	"testing"
 
+	"github.com/davleng/mozzarella/pkg/sbpf"
 	"github.com/stretchr/testify/assert"
-	"go.firedancer.io/radiance/pkg/sbpf"
 )
 
 func TestSymbolHash_Entrypoint(t *testing.T) {

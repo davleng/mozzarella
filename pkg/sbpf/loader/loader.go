@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"io"
 
-	"go.firedancer.io/radiance/pkg/sbpf"
+	"github.com/davleng/mozzarella/pkg/sbpf"
 )
 
 // TODO Fuzz

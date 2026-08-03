@@ -4,7 +4,7 @@ set -euo pipefail
 # Derived from Firedancer:
 # https://github.com/firedancer-io/firedancer/blob/main/deps.sh
 
-# Change into Radiance root directory
+# Change into Mozzarella root directory
 cd "$(dirname "${BASH_SOURCE[0]}")"
 REPO_ROOT="$(pwd)"
 
@@ -44,7 +44,7 @@ cat <<EOF
 
   Usage: $0 [cmd] [args...]
 
-  deps.sh is a lightweight dependency manager for Radiance.
+  deps.sh is a lightweight dependency manager for Mozzarella.
 
   It locally installs
   - build tools using the system package manager
@@ -416,7 +416,7 @@ install () {
 }
 
 if [[ $# -eq 0 ]]; then
-  echo "[~] This will fetch, build, and install Radiance dependencies into $(pwd)/opt"
+  echo "[~] This will fetch, build, and install Mozzarella dependencies into $(pwd)/opt"
   echo "[~] For help, run: $0 help"
   echo
   echo "[~] Running $0 install"

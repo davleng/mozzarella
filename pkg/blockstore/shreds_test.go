@@ -3,11 +3,11 @@ package blockstore
 import (
 	"testing"
 
+	"github.com/davleng/mozzarella/fixtures"
+	"github.com/davleng/mozzarella/pkg/shred"
 	"github.com/gagliardetto/solana-go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"go.firedancer.io/radiance/fixtures"
-	"go.firedancer.io/radiance/pkg/shred"
 )
 
 func TestDataShredsToEntries_Mainnet_Genesis(t *testing.T) {

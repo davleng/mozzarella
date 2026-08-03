@@ -1,4 +1,4 @@
-module go.firedancer.io/radiance
+module github.com/davleng/mozzarella
 
 go 1.25.0
 

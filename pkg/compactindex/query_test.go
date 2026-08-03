@@ -30,7 +30,7 @@ func TestOpen_InvalidMagic(t *testing.T) {
 
 	db, dbErr := Open(bytes.NewReader(buf[:]))
 	require.Nil(t, db)
-	require.EqualError(t, dbErr, "not a radiance compactindex file")
+	require.EqualError(t, dbErr, "not a mozzarella compactindex file")
 }
 
 func TestOpen_HeaderOnly(t *testing.T) {

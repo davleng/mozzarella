@@ -21,4 +21,4 @@ jobs:
         run: source activate-opt && go vet ./...
 
       - name: Build
-        run: source activate-opt && go build -v ./cmd/radiance
+        run: source activate-opt && go build -v ./cmd/mozzarella

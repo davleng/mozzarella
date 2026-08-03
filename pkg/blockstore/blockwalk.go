@@ -1,6 +1,6 @@
 package blockstore
 
-import "go.firedancer.io/radiance/pkg/shred"
+import "github.com/davleng/mozzarella/pkg/shred"
 
 // BlockWalkI abstracts iterators over block data.
 //

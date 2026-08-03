@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"math"
 
+	"github.com/davleng/mozzarella/pkg/shred"
 	bin "github.com/gagliardetto/binary"
-	"go.firedancer.io/radiance/pkg/shred"
 )
 
 // MakeShredKey creates the RocksDB key for CfDataShred or CfCodeShred.

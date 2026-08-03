@@ -3,8 +3,8 @@
 
 # Build artifacts
 _bin
-/radiance
-/cmd/radiance/radiance
+/mozzarella
+/cmd/mozzarella/mozzarella
 /vendor
 
 # Data

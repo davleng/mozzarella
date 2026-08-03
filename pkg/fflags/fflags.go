@@ -5,7 +5,7 @@
 package fflags
 
 import (
-	"go.firedancer.io/radiance/pkg/solana"
+	"github.com/davleng/mozzarella/pkg/solana"
 )
 
 // Feature is an opaque handle to a feature flag.

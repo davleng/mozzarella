@@ -3,9 +3,9 @@ package sealevel
 import (
 	"fmt"
 
+	"github.com/davleng/mozzarella/pkg/sbpf"
+	"github.com/davleng/mozzarella/pkg/sbpf/cu"
 	"github.com/gagliardetto/solana-go"
-	"go.firedancer.io/radiance/pkg/sbpf"
-	"go.firedancer.io/radiance/pkg/sbpf/cu"
 )
 
 func SyscallLogImpl(vm sbpf.VM, ptr, strlen uint64, cuIn int) (r0 uint64, cuOut int, err error) {

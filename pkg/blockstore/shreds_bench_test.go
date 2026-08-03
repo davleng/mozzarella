@@ -3,7 +3,7 @@ package blockstore
 import (
 	"testing"
 
-	"go.firedancer.io/radiance/fixtures"
+	"github.com/davleng/mozzarella/fixtures"
 )
 
 func BenchmarkDataShredsToEntries_mainnet102815960(b *testing.B) {

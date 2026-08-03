@@ -3,8 +3,8 @@ package sealevel
 import (
 	"errors"
 
-	"go.firedancer.io/radiance/pkg/sbpf"
-	"go.firedancer.io/radiance/pkg/sbpf/cu"
+	"github.com/davleng/mozzarella/pkg/sbpf"
+	"github.com/davleng/mozzarella/pkg/sbpf/cu"
 )
 
 var (
