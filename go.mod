@@ -10,8 +10,8 @@ require (
 	github.com/gagliardetto/solana-go v1.8.4
 	github.com/google/gopacket v1.1.19
 	github.com/google/nftables v0.3.0
-	github.com/linxGnu/grocksdb v1.8.12
-	github.com/mattn/go-isatty v0.0.24
+	github.com/linxGnu/grocksdb v1.10.8
+	github.com/mattn/go-isatty v0.0.20
 	github.com/minio/sha256-simd v1.0.1
 	github.com/mr-tron/base58 v1.3.0
 	github.com/novifinancial/serde-reflection/serde-generate/runtime/golang v0.0.0-20220519162058-e5cd3c3b3f3a
