@@ -8,7 +8,6 @@
 // # Compatibility
 //
 // We aim to support all Solana Rust versions since mainnet genesis.
-// Test fixtures are added for each major revision.
 package blockstore
 
 import (
