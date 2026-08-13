@@ -16,9 +16,9 @@ import (
 	"time"
 
 	"github.com/LiamHaworth/go-tproxy"
-	"github.com/davleng/mozzarella/pkg/endpoints"
-	"github.com/davleng/mozzarella/pkg/netlink"
-	"github.com/davleng/mozzarella/pkg/nftables"
+	"github.com/davleng/mozzarella/endpoints"
+	"github.com/davleng/mozzarella/netlink"
+	"github.com/davleng/mozzarella/nftables"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promauto"
 	"github.com/prometheus/client_golang/prometheus/promhttp"

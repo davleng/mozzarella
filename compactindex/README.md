@@ -18,7 +18,7 @@ This package specifies a file format and Go implementation for indexing constant
 
 Refer to the Go documentation for the algorithms used and implementation details.
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/davleng/mozzarella/pkg/compactindex.svg)](https://pkg.go.dev/github.com/davleng/mozzarella/pkg/compactindex)
+[![Go Reference](https://pkg.go.dev/badge/github.com/davleng/mozzarella/compactindex.svg)](https://pkg.go.dev/github.com/davleng/mozzarella/compactindex)
 
 [^1]: Fredman, M. L., Komlós, J., & Szemerédi, E. (1984). Storing a Sparse Table with 0 (1) Worst Case Access Time. Journal of the ACM, 31(3), 538–544. https://doi.org/10.1145/828.1884
 [^2]: cdb by D. J. Bernstein https://cr.yp.to/cdb.html

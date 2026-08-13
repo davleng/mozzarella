@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/davleng/mozzarella/pkg/shred"
+	"github.com/davleng/mozzarella/shred"
 	"github.com/linxGnu/grocksdb"
 	"k8s.io/klog/v2"
 )

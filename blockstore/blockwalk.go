@@ -1,6 +1,6 @@
 package blockstore
 
-import "github.com/davleng/mozzarella/pkg/shred"
+import "github.com/davleng/mozzarella/shred"
 
 // BlockWalkI abstracts iterators over block data.
 //

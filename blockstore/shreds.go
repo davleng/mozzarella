@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/davleng/mozzarella/pkg/shred"
+	"github.com/davleng/mozzarella/shred"
 	bin "github.com/gagliardetto/binary"
 )
 

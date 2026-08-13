@@ -3,7 +3,7 @@ package sealevel
 import (
 	"errors"
 
-	"github.com/davleng/mozzarella/pkg/sbpf"
+	"github.com/davleng/mozzarella/sbpf"
 )
 
 func SyscallAbortImpl(_ sbpf.VM, _ int) (r0 uint64, cuOut int, err error) {

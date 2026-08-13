@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/davleng/mozzarella/pkg/sbpf"
+	"github.com/davleng/mozzarella/sbpf"
 )
 
 // TODO Fuzz

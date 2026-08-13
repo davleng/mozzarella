@@ -3,8 +3,8 @@ package sealevel
 import (
 	"errors"
 
-	"github.com/davleng/mozzarella/pkg/sbpf"
-	"github.com/davleng/mozzarella/pkg/sbpf/cu"
+	"github.com/davleng/mozzarella/sbpf"
+	"github.com/davleng/mozzarella/sbpf/cu"
 )
 
 var (

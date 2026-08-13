@@ -7,7 +7,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/davleng/mozzarella/pkg/archiveutil"
+	"github.com/davleng/mozzarella/archiveutil"
 	bin "github.com/gagliardetto/binary"
 )
 

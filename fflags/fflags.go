@@ -5,7 +5,7 @@
 package fflags
 
 import (
-	"github.com/davleng/mozzarella/pkg/solana"
+	"github.com/davleng/mozzarella/solana"
 )
 
 // Feature is an opaque handle to a feature flag.

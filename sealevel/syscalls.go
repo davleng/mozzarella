@@ -1,7 +1,7 @@
 package sealevel
 
 import (
-	"github.com/davleng/mozzarella/pkg/sbpf"
+	"github.com/davleng/mozzarella/sbpf"
 )
 
 var registry = Syscalls()

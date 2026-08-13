@@ -10,8 +10,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/davleng/mozzarella/pkg/blockstore"
-	"github.com/davleng/mozzarella/pkg/shred"
+	"github.com/davleng/mozzarella/blockstore"
+	"github.com/davleng/mozzarella/shred"
 	"github.com/mattn/go-isatty"
 	"github.com/spf13/cobra"
 	"k8s.io/klog/v2"

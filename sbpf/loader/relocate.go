@@ -5,7 +5,7 @@ import (
 	"encoding/binary"
 	"fmt"
 
-	"github.com/davleng/mozzarella/pkg/sbpf"
+	"github.com/davleng/mozzarella/sbpf"
 )
 
 // relocate applies ELF relocations (for syscalls and position-independent code).

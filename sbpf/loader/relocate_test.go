@@ -3,7 +3,7 @@ package loader
 import (
 	"testing"
 
-	"github.com/davleng/mozzarella/pkg/sbpf"
+	"github.com/davleng/mozzarella/sbpf"
 	"github.com/stretchr/testify/assert"
 )
 

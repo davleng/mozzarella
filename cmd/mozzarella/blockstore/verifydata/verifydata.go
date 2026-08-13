@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"github.com/VividCortex/ewma"
-	"github.com/davleng/mozzarella/pkg/blockstore"
+	"github.com/davleng/mozzarella/blockstore"
 	"github.com/linxGnu/grocksdb"
 	"github.com/mattn/go-isatty"
 	"github.com/spf13/cobra"

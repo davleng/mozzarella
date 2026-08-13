@@ -3,7 +3,7 @@ package sealevel
 import (
 	"bytes"
 
-	"github.com/davleng/mozzarella/pkg/sbpf"
+	"github.com/davleng/mozzarella/sbpf"
 )
 
 type TxContext struct{}

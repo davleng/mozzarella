@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/davleng/mozzarella/pkg/sbpf"
+	"github.com/davleng/mozzarella/sbpf"
 )
 
 // The following ELF loading rules seem mostly arbitrary.

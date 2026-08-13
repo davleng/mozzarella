@@ -7,8 +7,8 @@ import (
 	"os"
 	"strings"
 
+	"github.com/davleng/mozzarella/blockstore"
 	"github.com/davleng/mozzarella/cmd/mozzarella/blockstore/util"
-	"github.com/davleng/mozzarella/pkg/blockstore"
 	"github.com/linxGnu/grocksdb"
 	"github.com/segmentio/textio"
 	"github.com/spf13/cobra"

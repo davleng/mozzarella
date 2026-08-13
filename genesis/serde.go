@@ -4,7 +4,7 @@ import (
 	"io"
 	"time"
 
-	"github.com/davleng/mozzarella/pkg/runtime"
+	"github.com/davleng/mozzarella/runtime"
 	bin "github.com/gagliardetto/binary"
 )
 

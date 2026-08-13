@@ -3,8 +3,8 @@ package sealevel
 import (
 	"fmt"
 
-	"github.com/davleng/mozzarella/pkg/sbpf"
-	"github.com/davleng/mozzarella/pkg/sbpf/cu"
+	"github.com/davleng/mozzarella/sbpf"
+	"github.com/davleng/mozzarella/sbpf/cu"
 	"github.com/gagliardetto/solana-go"
 )
 

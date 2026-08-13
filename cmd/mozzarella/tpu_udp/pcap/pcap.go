@@ -5,7 +5,7 @@ import (
 	"log"
 	"sort"
 
-	"github.com/davleng/mozzarella/pkg/tpu"
+	"github.com/davleng/mozzarella/tpu"
 	"github.com/gagliardetto/solana-go"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"

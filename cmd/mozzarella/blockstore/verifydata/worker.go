@@ -8,7 +8,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/davleng/mozzarella/pkg/blockstore"
+	"github.com/davleng/mozzarella/blockstore"
 	"github.com/linxGnu/grocksdb"
 	"github.com/vbauerster/mpb/v8"
 	"k8s.io/klog/v2"

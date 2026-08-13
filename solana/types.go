@@ -1,6 +1,6 @@
 package solana
 
-import "github.com/davleng/mozzarella/pkg/base58"
+import "github.com/davleng/mozzarella/base58"
 
 type Hash [32]byte
 type Address [32]byte

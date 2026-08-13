@@ -3,7 +3,7 @@ package genesis
 import (
 	"time"
 
-	"github.com/davleng/mozzarella/pkg/runtime"
+	"github.com/davleng/mozzarella/runtime"
 )
 
 // Genesis contains the genesis state of a Solana ledger.

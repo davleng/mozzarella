@@ -4,8 +4,8 @@ import (
 	"encoding/base64"
 	"encoding/json"
 
-	"github.com/davleng/mozzarella/pkg/blockstore"
-	"github.com/davleng/mozzarella/pkg/shred"
+	"github.com/davleng/mozzarella/blockstore"
+	"github.com/davleng/mozzarella/shred"
 )
 
 // entryBatch is a YAML-friendly version of blockstore.Entries.

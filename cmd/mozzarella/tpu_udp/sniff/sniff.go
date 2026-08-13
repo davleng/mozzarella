@@ -7,9 +7,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/davleng/mozzarella/pkg/endpoints"
-	"github.com/davleng/mozzarella/pkg/netlink"
-	"github.com/davleng/mozzarella/pkg/tpu"
+	"github.com/davleng/mozzarella/endpoints"
+	"github.com/davleng/mozzarella/netlink"
+	"github.com/davleng/mozzarella/tpu"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
 	"github.com/google/gopacket/pcap"
