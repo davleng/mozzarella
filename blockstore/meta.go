@@ -1,7 +1,10 @@
+//go:build !lite
+
 package blockstore
 
 import (
 	"encoding/binary"
+	"fmt"
 	"math"
 )
 
@@ -21,13 +24,13 @@ type SlotMeta struct {
 	EntryEndIndexes    []uint32 `yaml:"completed_data_indexes,flow"`
 }
 
-// MakeSlotKey creates the RocksDB key for CfMeta, CfRoot.
+// MakeSlotKey creates the logical key for CfMeta and CfRoot.
 func MakeSlotKey(slot uint64) (key [8]byte) {
 	binary.BigEndian.PutUint64(key[0:8], slot)
 	return
 }
 
-// ParseSlotKey decodes the RocksDB keys in CfMeta, CfRoot.
+// ParseSlotKey decodes keys in CfMeta and CfRoot.
 func ParseSlotKey(key []byte) (slot uint64, ok bool) {
 	ok = len(key) == 8
 	if !ok {
@@ -44,4 +47,27 @@ func (s *SlotMeta) IsFull() bool {
 		return false
 	}
 	return s.Consumed == s.LastIndex+1
+}
+
+// MaxRoot returns the last known root slot.
+func (d *DB) MaxRoot() (uint64, error) {
+	iter, err := d.NewIterator(CfRoot)
+	if err != nil {
+		return 0, err
+	}
+	defer iter.Close()
+	if !iter.SeekToLast() || !iter.Valid() {
+		return 0, ErrNotFound
+	}
+	slot, ok := ParseSlotKey(iter.Key())
+	if !ok {
+		return 0, fmt.Errorf("invalid key in root cf")
+	}
+	return slot, nil
+}
+
+// GetSlotMeta returns the shredding metadata of a given slot.
+func (d *DB) GetSlotMeta(slot uint64) (*SlotMeta, error) {
+	key := MakeSlotKey(slot)
+	return GetBincode[SlotMeta](d, CfMeta, key[:])
 }

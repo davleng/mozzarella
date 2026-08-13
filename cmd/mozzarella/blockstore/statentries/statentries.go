@@ -14,7 +14,7 @@ import (
 )
 
 var Cmd = cobra.Command{
-	Use:   "stat-entries <rocksdb> <slots>",
+	Use:   "stat-entries <database> <slots>",
 	Short: "Produce CSV report at entry-level granularity",
 	Args:  cobra.ExactArgs(2),
 }

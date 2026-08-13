@@ -119,7 +119,7 @@ func run(_ *cobra.Command, _ []string) {
 	for p := range packets {
 		tx, err := tpu.ParseTx(p.data)
 		if err != nil {
-			klog.Warning("port %d error parsing tx: ", p.port, err)
+			klog.Warningf("port %d error parsing tx: %v", p.port, err)
 			continue
 		}
 

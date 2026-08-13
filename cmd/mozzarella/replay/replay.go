@@ -32,7 +32,7 @@ var (
 
 func init() {
 	flags.StringVar(&flagGenesis, "genesis", "", "Path to genesis")
-	flags.StringVar(&flagDB, "db", "", "Path to RocksDB")
+	flags.StringVar(&flagDB, "db", "", "Path to blockstore database")
 }
 
 func run(c *cobra.Command, _ []string) {

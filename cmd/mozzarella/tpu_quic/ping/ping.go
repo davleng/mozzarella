@@ -252,7 +252,7 @@ func ping(ctx context.Context, c int, tlsConf *tls.Config, qconf quic.Config, si
 		client := rpc.New(flagRPC)
 		defer client.Close()
 
-		out, err := client.GetRecentBlockhash(context.TODO(), rpc.CommitmentFinalized)
+		out, err := client.GetLatestBlockhash(context.TODO(), rpc.CommitmentFinalized)
 		if err != nil {
 			klog.Exitf("Failed to get recent blockhash: %v", err)
 		}

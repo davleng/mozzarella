@@ -18,8 +18,8 @@ import (
 )
 
 var Cmd = cobra.Command{
-	Use:   "tar-blocks <rocksdb> <out>",
-	Short: "Export rooted blocks from RocksDB to TAR stream",
+	Use:   "tar-blocks <database> <out>",
+	Short: "Export rooted blocks from blockstore database to TAR stream",
 	Long: `Creates a TAR stream of rooted blocks in serialized-batches binary format.
 
 Each block/<slot>.bin file is a bincode Vec<Vec<Entry>> serialization of the block data.
@@ -35,10 +35,10 @@ func init() {
 }
 
 func run(_ *cobra.Command, args []string) {
-	rocksDB := args[0]
+	dbPath := args[0]
 	outPath := args[1]
 
-	db, err := blockstore.OpenReadOnly(rocksDB)
+	db, err := blockstore.OpenReadOnly(dbPath)
 	if err != nil {
 		klog.Exitf("Failed to open blockstore: %s", err)
 	}

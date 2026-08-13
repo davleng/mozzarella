@@ -14,7 +14,7 @@ import (
 )
 
 var Cmd = cobra.Command{
-	Use:   "stat-data-rate <rocksdb> <slots>",
+	Use:   "stat-data-rate <database> <slots>",
 	Short: "Produce CSV report of data rate at slot-level granularity",
 	Args:  cobra.ExactArgs(2),
 }

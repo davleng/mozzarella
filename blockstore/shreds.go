@@ -1,3 +1,5 @@
+//go:build !lite
+
 package blockstore
 
 import (
@@ -9,14 +11,14 @@ import (
 	bin "github.com/gagliardetto/binary"
 )
 
-// MakeShredKey creates the RocksDB key for CfDataShred or CfCodeShred.
+// MakeShredKey creates the logical key for CfDataShred or CfCodeShred.
 func MakeShredKey(slot, index uint64) (key [16]byte) {
 	binary.BigEndian.PutUint64(key[0:8], slot)
 	binary.BigEndian.PutUint64(key[8:16], index)
 	return
 }
 
-// ParseShredKey decodes the RocksDB keys in CfDataShred or CfCodeShred.
+// ParseShredKey decodes keys in CfDataShred or CfCodeShred.
 func ParseShredKey(key []byte) (slot uint64, index uint64, ok bool) {
 	ok = len(key) == 16
 	if !ok {
@@ -123,4 +125,116 @@ func (se *SubEntries) UnmarshalWithDecoder(decoder *bin.Decoder) (err error) {
 		}
 	}
 	return
+}
+
+func (d *DB) GetEntries(meta *SlotMeta, shredRevision int) ([]Entries, error) {
+	shreds, err := d.GetDataShreds(meta.Slot, 0, uint32(meta.Received), shredRevision)
+	if err != nil {
+		return nil, err
+	}
+	return DataShredsToEntries(meta, shreds)
+}
+
+func (d *DB) GetAllDataShreds(slot uint64, revision int) ([]shred.Shred, error) {
+	return d.getAllShreds(CfDataShred, slot, revision)
+}
+
+func (d *DB) GetDataShreds(slot uint64, startIdx, endIdx uint32, revision int) ([]shred.Shred, error) {
+	iter, err := d.NewIterator(CfDataShred)
+	if err != nil {
+		return nil, err
+	}
+	defer iter.Close()
+	key := MakeShredKey(slot, uint64(startIdx))
+	iter.Seek(key[:])
+	return GetDataShredsFromIter(iter, slot, startIdx, endIdx, revision)
+}
+
+func GetDataShredsFromIter(iter *Iterator, slot uint64, startIdx, endIdx uint32, revision int) ([]shred.Shred, error) {
+	var shreds []shred.Shred
+	for i := startIdx; i < endIdx; i++ {
+		var curSlot, index uint64
+		valid := iter.Valid()
+		if valid {
+			key := iter.Key()
+			if len(key) != 16 {
+				continue
+			}
+			curSlot = binary.BigEndian.Uint64(key)
+			index = binary.BigEndian.Uint64(key[8:])
+		}
+		if !valid || curSlot != slot {
+			return nil, fmt.Errorf("missing shreds for slot %d", slot)
+		}
+		if index != uint64(i) {
+			return nil, fmt.Errorf("missing shred %d for slot %d", i, index)
+		}
+		s := shred.NewShredFromSerialized(iter.Value(), revision)
+		if !s.Ok() {
+			return nil, fmt.Errorf("failed to deserialize shred %d/%d", slot, i)
+		}
+		shreds = append(shreds, s)
+		iter.Next()
+	}
+	if err := iter.Error(); err != nil {
+		return nil, err
+	}
+	return shreds, nil
+}
+
+func (d *DB) GetDataShred(slot, index uint64, revision int) shred.Shred {
+	return d.getShred(CfDataShred, slot, index, revision)
+}
+
+func (d *DB) GetRawDataShred(slot, index uint64) ([]byte, error) {
+	return d.getRawShred(CfDataShred, slot, index)
+}
+
+func (d *DB) GetAllCodeShreds(slot uint64) ([]shred.Shred, error) {
+	return d.getAllShreds(CfCodeShred, slot, shred.RevisionV2)
+}
+
+func (d *DB) GetCodeShred(slot, index uint64) shred.Shred {
+	return d.getShred(CfCodeShred, slot, index, shred.RevisionV2)
+}
+
+func (d *DB) GetRawCodeShred(slot, index uint64) ([]byte, error) {
+	return d.getRawShred(CfCodeShred, slot, index)
+}
+
+func (d *DB) getRawShred(columnFamily string, slot, index uint64) ([]byte, error) {
+	key := MakeShredKey(slot, index)
+	return d.Get(columnFamily, key[:])
+}
+
+func (d *DB) getShred(columnFamily string, slot, index uint64, revision int) (s shred.Shred) {
+	value, err := d.getRawShred(columnFamily, slot, index)
+	if err != nil {
+		return
+	}
+	return shred.NewShredFromSerialized(value, revision)
+}
+
+func (d *DB) getAllShreds(columnFamily string, slot uint64, revision int) ([]shred.Shred, error) {
+	iter, err := d.NewIterator(columnFamily)
+	if err != nil {
+		return nil, err
+	}
+	defer iter.Close()
+	prefix := MakeSlotKey(slot)
+	iter.Seek(prefix[:])
+	var shreds []shred.Shred
+	for iter.Valid() {
+		key := iter.Key()
+		if len(key) < len(prefix) || string(key[:len(prefix)]) != string(prefix[:]) {
+			break
+		}
+		s := shred.NewShredFromSerialized(iter.Value(), revision)
+		if !s.Ok() {
+			return nil, fmt.Errorf("invalid shred %d/%d", slot, len(shreds))
+		}
+		shreds = append(shreds, s)
+		iter.Next()
+	}
+	return shreds, iter.Error()
 }

@@ -10,20 +10,20 @@ import (
 	"path/filepath"
 	"strconv"
 
-	"github.com/davleng/mozzarella/cmd/mozzarella/blockstore/util"
 	"github.com/davleng/mozzarella/blockstore"
+	"github.com/davleng/mozzarella/cmd/mozzarella/blockstore/util"
 	"github.com/davleng/mozzarella/shred"
 	"github.com/spf13/cobra"
 	"k8s.io/klog/v2"
 )
 
 var Cmd = cobra.Command{
-	Use:   "dump-batches <rocksdb> <out> <slots>",
+	Use:   "dump-batches <database> <out> <slots>",
 	Short: "Dump shred/microblock batches to file system",
-	Long: `dump-batches writes raw serialized shred data batches from RocksDB to the file system.
+	Long: `dump-batches writes raw serialized shred data batches from the blockstore database to the file system.
 
 Creates file paths ./<out>/<slot>/batch<index>.bin`,
-	Example: `    dump-shreds ./rocksdb ./batches 1:3,4
+	Example: `    dump-batches ./database ./batches 1:3,4
 ./batches/1/batch0.bin
 ...
 ./batches/2/batch0.bin
@@ -42,10 +42,10 @@ func init() {
 }
 
 func run(_ *cobra.Command, args []string) {
-	rocksDB := args[0]
+	dbPath := args[0]
 	outPath := args[1]
 
-	db, err := blockstore.OpenReadOnly(rocksDB)
+	db, err := blockstore.OpenReadOnly(dbPath)
 	if err != nil {
 		klog.Exitf("Failed to open blockstore: %s", err)
 	}
@@ -62,7 +62,7 @@ func run(_ *cobra.Command, args []string) {
 	slots.Iter(func(slot uint64) bool {
 		err := dumpSlot(db, outPath, slot)
 		if err != nil {
-			klog.Warning("Failed to dump slot %d: %s", slot, err)
+			klog.Warningf("Failed to dump slot %d: %s", slot, err)
 		}
 		return true
 	})
