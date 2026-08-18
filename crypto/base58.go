@@ -6,7 +6,7 @@
 // https://github.com/firedancer-io/firedancer/blob/main/src/ballet/base58/fd_base58.h
 //
 // Original author: Philip Taffet <phtaffet@jumptrading.com>
-package base58
+package crypto
 
 import (
 	"encoding/binary"
