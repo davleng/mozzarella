@@ -8,7 +8,7 @@
 // # Compatibility
 //
 // We aim to support all Solana Rust versions since mainnet genesis.
-package blockstore
+package ledger
 
 import (
 	"context"

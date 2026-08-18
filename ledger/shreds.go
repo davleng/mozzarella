@@ -1,6 +1,6 @@
 //go:build !lite
 
-package blockstore
+package ledger
 
 import (
 	"encoding/binary"

@@ -1,6 +1,6 @@
 //go:build !lite
 
-package blockstore
+package ledger
 
 import (
 	"encoding/binary"
@@ -66,8 +66,8 @@ func (d *DB) MaxRoot() (uint64, error) {
 	return slot, nil
 }
 
-// GetSlotMeta returns the shredding metadata of a given slot.
-func (d *DB) GetSlotMeta(slot uint64) (*SlotMeta, error) {
-	key := MakeSlotKey(slot)
-	return GetBincode[SlotMeta](d, CfMeta, key[:])
-}
+// // GetSlotMeta returns the shredding metadata of a given slot.
+// func (d *DB) GetSlotMeta(slot uint64) (*SlotMeta, error) {
+// 	key := MakeSlotKey(slot)
+// 	return GetBincode[SlotMeta](d, CfMeta, key[:])
+// }
