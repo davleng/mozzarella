@@ -12,13 +12,8 @@ jobs:
 
       - uses: ./.github/actions/deps
 
-      - name: Setup Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: 1.22.0
-
       - name: Vet
-        run: source activate-opt && go vet ./...
+        run: go vet ./...
 
       - name: Build
-        run: source activate-opt && go build -v ./cmd/mozzarella
+        run: go build -v ./cmd/mozzarella
