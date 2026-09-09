@@ -11,7 +11,7 @@ require (
 	github.com/novifinancial/serde-reflection/serde-generate/runtime/golang v0.0.0-20220519162058-e5cd3c3b3f3a
 	github.com/stretchr/testify v1.12.1
 	github.com/vbauerster/mpb/v8 v8.15.2
-	golang.org/x/sync v0.22.0
+	golang.org/x/sync v0.23.0
 	k8s.io/klog/v2 v2.140.0
 )
 
